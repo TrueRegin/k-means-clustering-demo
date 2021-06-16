@@ -2,10 +2,11 @@ const $FileInput = document.querySelector('input[type="file"]') as HTMLInputElem
 const $ColorPreview = document.querySelector('div#color-preview') as HTMLDivElement
 const canvas = document.createElement('canvas');
 const preview = document.createElement('img');
+preview.id = "preview"
 const ctx = canvas.getContext('2d');
 let imageData: Vec3[];
 
-$FileInput.addEventListener('change', (event) => {
+$FileInput.addEventListener('input', (event) => {
     let file: File = $FileInput.files[0];
     let reader = new FileReader();
     
@@ -48,12 +49,14 @@ type Vec3 = [number, number, number]
 function imageToVectors(imageData: Uint8ClampedArray): Vec3[] {
     let output = []
     for(let i = 0; i < imageData.length; i+=4) {
-        output.push([imageData[i], imageData[i+1], imageData[i+2]])
+        if(imageData[i+3] !== 0) {
+            output.push([imageData[i], imageData[i+1], imageData[i+2]])
+        }
     }
     return output;
 }
 
-const MAX_ITERS = 50;
+const MAX_ITERS = 200;
 function calculateMeanColors() {
     ctx.drawImage(preview, 0, 0);
     let data = ctx.getImageData(0, 0, preview.width, preview.height);
