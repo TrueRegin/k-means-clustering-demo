@@ -1,5 +1,6 @@
 # K-Means Clustering Test
 Input an image and get 4 colors determined by k-means clustering.
+Demo at [https://k-means-clustering-demo.netlify.app/](https://k-means-clustering-demo.netlify.app/)
 
 ## Premise
 K Means clustering is a method that takes in a set of data and than outputs clusters of that data.
@@ -18,6 +19,3 @@ One video that can help you understand this concept is [https://www.youtube.com/
 
 ## Installation
 Run `vite` inside the root folder of this repository, if you don't have vite globally installed, run `npm install -g vite`
-
-## Demo
-Demo at [https://k-means-clustering-demo.netlify.app/](https://k-means-clustering-demo.netlify.app/)
